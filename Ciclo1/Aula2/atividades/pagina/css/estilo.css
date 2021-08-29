@@ -1,0 +1,70 @@
+body{
+	margin: 0;
+	padding: 0;
+}
+/*main elemento Pai*/
+main{
+	width: 80%;
+	height: auto; /*quando colocado em auto assume o tamanho do filho*/
+	margin: 0 auto;
+	margin-top: 10px;
+	background-color: cyan;
+	display: flex; /*faz os elementos ficarem na horizontal*/
+	/*justify-content: space-between; vai dar um espaçamento entre os elementos*/
+	padding: 3px; /*ele da uma margem pra dentro*/
+	flex-direction: column; /*faz ele pular de linha*/
+}
+/*elemento filho*/
+.quadrado{
+	width: 50px;
+	height: 50px;
+	border: 1px solid #000 ;
+	margin: 2px;
+	background-color: tomato;
+	color: #fff;
+	font-family: verdana , arial, cursive;
+	font-weight: bold;
+	display: flex;
+/*	os dois de baixo funciona quando o display flex é colocado no codigo*/
+	justify-content: center;/*vai dar um espaçamento entre os elementos*/
+	align-items: center; /*alinha os itens*/
+}
+.ajustemargem{
+	margin-top: 2px;
+}
+.estante {
+	display: flex;
+	width: 100%; /*faz o elemento ocupar o tanto da porcentagem colocada*/
+	height: 60px;
+	background-color: #880e4f;
+	justify-content: space-between;	
+}
+.circ {
+	width: 50px;
+	height: 50px;
+	background-color: #015793;
+	border-radius: 100%;
+}
+.center{
+	justify-content: center;
+	align-items: center;
+}
+.link{
+
+	width: 100%;
+	height: auto;
+	padding: 20px;
+}
+.voltar{
+
+	padding: 10px;
+	width: 100px;
+	background-color: #42A5F5;
+	color: #fff;
+	text-decoration: none;/*tira o traçado do link*/
+}
+/*quando passar o mouse vai fazer o que estiver aki*/
+.voltar:hover{
+background-color: #1A237E;
+text-decoration: underline;
+}
