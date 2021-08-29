@@ -1,0 +1,10 @@
+/*
+ - RECOMENDAÇÕES
+ 	- Estudar o conceito de tableLess
+ 	- Estudar sobre Sass Css
+ 	- No site caniuse.com 'eu posso usar' você pode fazer uma pesquisa
+ 		e saber quais motores de renderização "navegadores" 
+ 		aceitam determinada propriedade css.
+ 		
+ 	+\O/+	
+*/

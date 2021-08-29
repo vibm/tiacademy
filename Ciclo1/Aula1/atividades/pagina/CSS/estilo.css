@@ -1,0 +1,74 @@
+body{
+	margin: 0; /*deixa 'colado'*/
+	padding: 0;
+}
+main {
+	width: 80%; /*do tamanho do viewport*/
+	height: auto;
+	margin: 0 auto; /*Para centralizar*/
+	margin-top: 10px;
+	background-color: cyan;
+	display: flex; /*colocar um ao lado do outro*/
+	padding: 3px;
+	flex-direction: column;
+}
+
+.quadrado{
+	width: 50px;
+	height: 50px;
+	border: 1px solid #000;
+	margin: 2px;
+	background-color: tomato;
+	color: #fff; /*branco*/
+	font-family: verdana, arial, cursive;
+	font-weight:  bold;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.ajuste-margem{
+	margin-top: 2px;
+}
+
+.estante{
+	display: flex;
+	width: 100%;
+	height: 60px;
+	background-color: #880e4f; /*cor vinho*/
+	justify-content: space-between;
+}
+
+.circ{
+	width: 50px;
+	height: 50px;
+	background-color: #015793;
+	border-radius: 100%;
+}
+
+.center{
+	justify-content: center;
+	align-items: center;
+
+}
+
+.link{
+	padding: 20px;
+	width: 100%;
+	height: auto
+}
+
+.voltar{
+	padding: 10px;
+	width: 100px;
+	background-color: #FF6F00;
+	color: #fff;
+	text-decoration: none; /* remove a decoração do link*/
+}
+
+/* SELETOR:  MUDAR A COR QUANDO PASSAR O MOUSE*/
+
+.voltar:hover{
+	background-color: #B71C1C;
+	text-decoration: underline;
+}

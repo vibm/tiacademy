@@ -1,0 +1,27 @@
+DESAFIO AULA 5 
+
+INSPIRAÇÕES 
+https://www.webdesign-inspiration.com/web-designs/style/modern
+
+
+META tag
+
+<meta> para manter no site
+
+**DESCRIPTION UM SÓ JÁ BASTA
+<meta name="description" content="Bakhtin, Vygotsky, ensino, aprendizagem, ensino-aprendizagem, interação, sócio-interacionismo, interacionismo sócio-discursivo, formação de professor, material didático " />
+<meta name="description" content="Grupo de Pesquisa Interação e Escrita - É formado por pesquisadores de várias Instituições de Ensino Superior do Paraná, preocupados com a escrita em situação de ensino e aprendizagem de línguas, nas suas mais variadas manifestações." />
+
+
+KEYWORDS
+<meta name="keywords" content="grupo de pesquisa letras, uem, letras, grupo, pesquisa, interação, escrita, interação e escrita, Vygotsky, Bakhtin, artigos, projetos, publicações, linguística, formação de professores, teses" />
+
+
+AUTHOR
+<meta name="author" content="Marcelo Weihmayr da Silva" />
+
+PESQUISAR OUTRAS
+------------------------------
+
+
+não colocar nenhuma referencua de url, mas colocar link "falso" para parecer um link

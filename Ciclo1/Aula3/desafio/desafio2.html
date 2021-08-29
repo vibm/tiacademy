@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Font - Google Fonts-->
+    <!-- 1) Titulo da página-->
+    <title>Desafio 2</title>
+</head>
+
+<style>
+    body{
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    header{
+        padding: 10px;
+        padding-right: 20px;
+        justify-content: space-between;
+    }
+    a{
+        margin-left: 45px;
+        text-decoration: none;
+        color:#edf5e1
+    }
+    .home:hover{
+        background-color: #5cdb95;
+        color:#05386b;
+    }
+    a:hover{
+        color:#5cdb95;
+    }
+    main{
+        margin-top: 150px;
+        margin-bottom: auto;    
+    }
+  
+    footer{
+        padding: 30px;
+        justify-content: center;
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        font-size: 1.5em;
+        font-weight: bold;
+    }
+    .logo{
+        align-items: center;
+        padding-left: 10px;
+        font-size: 1.1em;
+        font-weight: bold;
+  }
+    .home{
+        margin-left: 10px;
+        border-radius: 20px;
+        padding: 3px 15px;
+  }
+    /*ESTILO DO CONTEUDO NO MAIS*/
+    .row{
+        margin-left: auto;
+        margin-right: auto;
+        width: 530px;
+        height: 530px;
+        justify-content: center;
+        align-items: center;
+    }
+    /*BLOCO DA ESQUERDA*/
+    .esquerda{
+        flex: 50%;
+        text-align: left;
+        padding: 10px;
+
+    }
+    /*LINHA DIVISORA PONTILHADA*/
+    .pontilhado{
+        border-left: 3px dotted grey;
+        height: 200px;
+    }
+    /*BLOCO DA DIREITA - FORMULARIO*/
+    .direita{
+        flex: 50%;
+        padding-left: 5px;
+    }
+    .btn{
+        border-radius: 20px;
+        padding: 5px 20px;
+        box-shadow: 5px 5px #05386b;
+        font-size: 16px;
+    }
+    .azul{
+        background-color: #05386b;
+    }
+    .verde{
+        background-color: #379683;
+    }
+    .beje{
+        color:#edf5e1 ;
+    }
+    .flex{
+        display:flex;
+    }
+  
+
+    
+</style>
+
+<body>
+    <!-- 2) Barra de Navegação-->
+    <header class="azul flex">
+            <!--ESQUERDA-->
+            <div class="logo beje flex">LOGO</div>
+           <!--DIREITA-->
+            <!--<div class="Links">-->
+           
+            <div>
+                 <!--Home Estilo Diferente-->
+                 <a href="" class="home verde">Home</a>
+                 <!--Contato e Sobre iguais-->
+                 <a href="">Contato</a>
+                 <a href="">Sobre</a>   
+            </div>
+                  
+    </header>
+    <main>
+            <!-- 3) Contêiner do Layout + Footer - ROW flex-->
+        <div class="row flex">
+            <!--Coluna Esquerda-->
+            <div class="esquerda">
+                
+                <!--Texto com Cor de Fundo--> 
+                <p>
+                    Lorem ipsum, sdolor sit amet consectetur adipisicing elit. Veritatis, sint tempore? Nemo doloribus dignissimos et, corrupti saepe quo! Consequatur at ullam dicta eaque doloremque? Autem similique aspernatur laudantium minima blanditiis?
+                </p>
+                    <!--Coluna Meio *SE NECESSÁRIO-->
+            </div>
+            <div class="pontilhado"></div>
+            <!--Coluna Direita *MAIS ALTA QUE COL. ESQ. VH MAIOR-->
+            <div class="direita">
+                
+                <form>
+                    <!--Texto-->
+                    <label>
+                        Digite seu melhor e-mail
+                    </label><br><br>
+                    <!--Input de E-mail-->
+                    <input type="email" placeholder="e-mail"><br><br>
+                    <!--Botão-->
+                    <input class="btn verde beje" type="submit" name=""> 
+                </form>
+            </div>
+            
+        
+        </div>
+    </main>
+        <!-- 4) Rodapé FIXO-->
+    <footer class="azul beje flex">
+        by IT ACADEMY
+    </footer>        
+    
+</body>
+</html>

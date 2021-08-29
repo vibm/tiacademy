@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Formulario</title>
+</head>
+<style>
+	
+	form{
+		background-color: red;
+		border: 1px solid black;
+		width: 300px;
+		height: auto;
+		padding: 10px;
+		display: flex; /*POR PADRÃO FICA EM LINHA 'ROW'*/
+		flex-direction: column;
+	}
+
+	.txt {
+		margin-top: 5px;
+		max-resolution: 5px;
+		outline: none; /*TIRA A BORDA QUANDO CLICA EM UM INPUT DE TEXTO OU SENHA*/
+	}
+
+	.btn{
+		background-color: blue;
+		/*border: none; -----REMOVE BORDA DO BOTAO 'SUBMIT'*/
+		border: 1px solid #fff;
+	}
+</style>
+<body>
+	
+	<form name="frmCadastro" method="get"> 
+		<!-- TIPO DETERMINA QUE É TEXTO-->
+		<input class="txt" placeholder="Digite seu login" type="text" name=""> 
+		<input class="txt" placeholder="Digite sua senha"type="password" name="">
+		<select name="fruta"> <!-- SELECTOR -->
+			<option>Selecione</option>
+			<option>Banana</option>
+			<option>Laranja</option>
+			<option>Maçã</option>
+		</select>
+		<!-- CAIXA DE SELEÇÃO -->
+		<input type="checkbox" name=""> 
+		<input type="checkbox" name=""> 
+		<!--RADIO - PODE ELECIONAR UM BOTÃO POR VEZ, SE TIVER O MESMO NOME-->
+		<input type="radio" name="teste1" value="">
+		<input type="radio" name="teste1" value="">
+
+		<input type="radio" name="teste2" value="">
+		<input type="radio" name="teste2" value="">
+		
+		<input class="btn" type="submit" name=""> 
+	</form>
+
+</body>
+</html>

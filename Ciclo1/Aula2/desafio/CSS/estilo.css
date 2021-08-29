@@ -1,0 +1,55 @@
+body{
+	margin: 0; /*deixa 'colado'*/
+	padding: 0;
+	display: flex;
+	justify-content: center;
+}
+main {
+	width: 70%; /*do tamanho do viewport*/
+	height: auto; /* NÃO TEVE DIFERENÇA QUANDO MUDEI PARA 50%*/
+	margin: 0 auto; /*Para centralizar*/
+	margin-top: 200px;
+	background-color: #424242; /*amarelo*/
+	display: flex; /*colocar um ao lado do outro*/
+	padding: 3px;
+	flex-direction: column;
+}
+
+.quadrado{
+	width: 200px;
+	height: 200px;
+	margin: 2px;
+	background-color: #4CAF50; /*verde*/
+	color: #424242; /*cor da fonte branco*/
+	font-family: verdana, arial, cursive;
+	font-weight:  bold;
+	display: flex;
+	justify-content: center; /*flex para 'jogar' p/ esquerda*/
+	align-items: center;
+}
+
+.circ{
+	width: 200px;
+	height: 200px;
+	background-color: #FF9800;
+	border-radius: 100%; /*transforma em circulo*/
+	margin: 2px;
+	color: #424242; /*cor da fonte - branco*/
+	font-family: verdana, arial, cursive;
+	font-weight:  bold;
+	display: flex; /*ativa o 'flex' nesse parent*/
+	justify-content: center;/*justifica o texto*/
+	align-items: center; /*alinha o texto*/
+}
+
+.esq{
+	padding: 10px;
+	display: flex;
+	justify-content: flex-start;
+}
+
+.dir{
+	padding: 10px;
+	display: flex;
+	justify-content: flex-end;
+}

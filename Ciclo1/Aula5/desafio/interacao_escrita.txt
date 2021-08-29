@@ -1,0 +1,10 @@
+Endereço: escrita.uem.br
+
+REMODELAGEM DE LAYOUT
+- Apresente uma nova proposta para o site interação e escrita
+- O contexto de conteúdo deve permanecer (textos) não se preocupe com redirecionamento de links
+- O site não é responsivo (permita que o texto se desloque navegador ao redimencionar a página)
+- As cores podem ser alteradas
+- Deve manter um header e um footer
+
+;)

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Position</title>
+</head>
+<style>
+	body{
+		margin: 0;
+	}
+	div#pai{
+		width: 400px;
+		height: 200px;
+		border: 1px solid red;
+		position: absolute; /*QUANDO UTILIZO O POSITION
+		POSSO USAR ATRIBUIÇÕES, COMO O TOP E LEFT*/
+		top: 30px; /*AFASTA DO TOPO*/
+		left: 30px; /*AFASTA DA ESQ.*/	
+		/*right: 50%; NÃO USAR JUNTO COM LEFT*/
+		background-color: yellow;
+	/*position:  absolute / relative / fixed;
+		--top
+		--left   */
+	}
+	div#filho{
+		width: 50px;
+		height: 50px;
+		background-color: blue;
+		 /*ABSOLUTE SE CONDICIONA AO ELEMENTO PAI*/
+
+		left: 10px;
+		bottom: 0;
+		/*position: relative é relativo à ele mesmo. ele é independente do pai (?)*/
+
+	}
+</style>
+<body>
+	<div id="pai">
+
+		
+	</div>
+	<div id="filho"></div>
+	<!-- CRIADO AUTOMATIMAMENTE - div#teste_$*4
+		Cifrao cria sequencia de id/classes diferentes
+	<div id="teste_1"></div>
+	<div id="teste_2"></div>
+	<div id="teste_3"></div>
+	<div id="teste_4"></div>
+	-->
+</body>
+</html>
