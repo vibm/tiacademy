@@ -70,8 +70,8 @@ if(v7 !== v8){
 
 
 
-/* // <  menor que
-var va=700;
+// <  menor que
+/* var va=700;
 var vb=400;
 if (va < vb){
     console.log("va é menor que vb");
