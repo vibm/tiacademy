@@ -62,11 +62,11 @@ trocaSenha.addEventListener('click', ()=>{
        
 });
 
-//ALTERAR BG CAIXA DE TEXTO
+//ALTERAR BACKGROUND DA CAIXA DE TEXTO
 
 const cxTrocaBg = document.querySelector("#cxTbg");
 
-     cxTrocaBg.addEventListener("blur", ()=>{
-     cxTrocaBg.setAttribute("class", ".corBg");
- });
+	cxTrocaBg.addEventListener('blur', ()=>{
+		cxTrocaBg.setAttribute('class','corBg');
+	});
 }
