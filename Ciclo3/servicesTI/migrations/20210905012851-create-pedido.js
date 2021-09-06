@@ -8,7 +8,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      idCliente: {
+      ClienteId: {
         allowNull: false, //allowNull: FALSE FAZ COM QUE O DADO INSERIDO SEJA OBRIGATÓRIO
         type: Sequelize.INTEGER,
         references:{
@@ -16,9 +16,9 @@ module.exports = {
           key: 'id' // COM A CHAVE PRIMÁRIA ID
         },
         onDelete: 'CASCADE',
-        onUpdate: 'CASCADE',
+        onUpdate: 'CASCADE'
       },
-      idServico: {
+      ServicoId: {
         allowNull: false, //allowNull: FALSE FAZ COM QUE O DADO INSERIDO SEJA OBRIGATÓRIO
         type: Sequelize.INTEGER,
         references:{
@@ -26,7 +26,7 @@ module.exports = {
           key: 'id'
         },
         onDelete: 'CASCADE',
-        onUpdate: 'CASCADE',
+        onUpdate: 'CASCADE'
       },
       valor: {
         type: Sequelize.FLOAT(6,2)

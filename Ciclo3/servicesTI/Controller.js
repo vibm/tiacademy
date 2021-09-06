@@ -34,6 +34,15 @@ app.post('/clientes', async(req,res)=>{
 });
 
 
+// localhost:3000/servicos -> cria novo serviço
+app.post('/servicos', async(req, res)=>{
+    let create=await servico.create(
+        req.body
+    );
+    res.send('Serviço foi inserido');
+});
+
+
 // localhost:3000/pedidos -> cria novo pedido
 app.post('/pedidos', async(req, res)=>{ 
     let create=await pedido.create(
@@ -42,13 +51,114 @@ app.post('/pedidos', async(req, res)=>{
     res.send('Novo pedido feito');
 });
 
-// localhost:3000/servicos -> cria novo serviço
-app.post('/servicos', async(req, res)=>{
-    let create=await servico.create(
-        req.body
-    );
-    res.send('Serviço foi inserido');
+
+//criei nova rota 'listaservicos' - Encontra todos os serviços
+app.get('/listaservicos', async(req, res)=>{
+    await servico.findAll({
+        order: [['nome', 'DESC']]
+    }).then(function(servicos){
+        res.json({servicos})
+    });
 });
+
+//criei nova rota 'ofertas' - Conta quantos serviços tem
+app.get('/ofertas', async(req, res)=>{
+    await servico.count('id')
+    .then(function(servicos){
+        res.json({servicos});
+    });    
+});
+
+// :id é um parametro usado ali embaixo
+app.get('/servico/:id', async(req,res)=>{
+    servico.findByPk(req.params.id)
+    .then(servico =>{
+        return res.json({
+            error: false,
+            servico
+        });
+    }).catch(function(erro){
+        return res.status(400).json({
+            error: true,
+            message: "Código não está cadastrado!"
+        });
+    });
+});
+
+
+
+
+
+
+
+
+
+/*EXERCÍCIOS AULA 4*/
+
+// 1. Visualize todos os clientes ---OK
+app.get('/listaclientes', async(req, res)=>{
+    await cliente.findAll({
+        raw:true
+    }).then(function(clientes){
+        res.json({clientes})
+    });
+});
+
+// 2. Visualize os clientes em ordem de antiguidade. ---OK
+app.get('/listaclientesold', async(req, res)=>{
+    await cliente.findAll({
+        order: [['createdAt']] 
+    }).then(function(clientes){
+        res.json({clientes})
+    });
+});
+
+// 3. Visualize todos os pedidos. ---OK
+app.get('/listapedidos',async(req, res)=>{
+    await pedido.findAll({
+        raw: true
+    }).then(function(pedidos){
+        res.json({pedidos})
+    });
+});
+
+// 4. Visualize o pedido por ordem a partir do maior valor. ---OK
+app.get('/listapedidosmaiorvalor',async(req, res)=>{
+    await pedido.findAll({
+        order:[['valor','DESC']]
+    }).then(function(pedidos){
+        res.json({pedidos})
+    });
+});
+
+
+// 5. Informe quantos clientes estão na nossa base de dados. ---OK
+app.get('/quantidadeclientes', async(req, res)=>{
+    await cliente.count('id')
+    .then(function(clientes){
+        res.json({clientes});
+    });    
+});
+
+// 6. Informe a quantidade de pedidos solicitados. ---
+app.get('/quantidadepedidos', async(req, res)=>{
+    await pedido.count('id')
+    .then(function(pedidos){
+        res.json({pedidos});
+    });    
+});
+
+
+/* DESAFIO AULA 4
+    Qual é o valor total que o cliente X gastou na ServicesTI?
+    await User.sum('age', { where: { age: { [Op.gt]: 5 } } }); // 50
+*/
+app.get('/totalCliente/:id', async(req,res)=>{
+    await pedido.sum('valor', { where: { ClienteId: { [Op.gt]:req.params.id } } })
+    .then(function(totalCliente){res.json({totalCliente})
+    });
+}); 
+
 
 
 
