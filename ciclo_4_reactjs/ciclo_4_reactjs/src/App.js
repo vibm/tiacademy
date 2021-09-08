@@ -7,6 +7,7 @@ import { VisualizarPedido } from './view-pages/Pedido/VisualizarPedido';
 import { VisualizarServico } from './view-pages/Servico/VisualizarServico';
 
 import { Menu } from './components/Menu';
+import { Servico } from './view-pages/Servico/Servico';
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <Route path="/VisualizarCliente" component={VisualizarCliente} />
           <Route path="/VisualizarPedido" component={VisualizarPedido} />
           <Route path="/VisualizarServico" component={VisualizarServico} />
+          <Route path="/servico/:id" component={Servico}/>
         </Switch>
       </Router>
     </div>
