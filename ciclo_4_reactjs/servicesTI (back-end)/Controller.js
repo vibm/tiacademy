@@ -277,7 +277,7 @@ app.put('/editarcliente', async (req, res)=>{
 
 
 /*FINAL DA APLICAÇÃO (let em diante)*/
-let port=process.env.PORT || 3000 // var port que recebe do ambiente uma porta OU vai funcionar na porta 3000
+let port=process.env.PORT || 3001 // var port que recebe do ambiente uma porta OU vai funcionar na porta 3000
 
 //toda vez que eu tenho uma porta onde eu passo as minhas requisições, respostas, etc, o meu servidor vai ouvir se deu certo ou não \/
 app.listen(port,(req,res)=>{
