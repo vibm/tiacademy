@@ -21,11 +21,11 @@ let pedido=models.Pedido;
 
 
 /*FUNÇÃO*/
-app.get('/', function(req,res){ // EXIBE 'Olá Mundo!' no RAÍZ '/' ---> localhost:3000
+app.get('/', function(req,res){ // EXIBE 'Olá Mundo!' no RAÍZ '/' ---> localhost:3001
     res.send('Olá Mundo!');
 });
 
-// localhost:3000/clientes -> cria novo cliente
+// localhost:3001/clientes -> cria novo cliente
 app.post('/clientes', async(req,res)=>{ 
     let create=await cliente.create(
         req.body
@@ -34,7 +34,7 @@ app.post('/clientes', async(req,res)=>{
 });
 
 
-// localhost:3000/servicos -> cria novo serviço
+// localhost:3001/servicos -> cria novo serviço
 app.post('/servicos', async(req, res)=>{
     let create=await servico.create(
         req.body
@@ -43,7 +43,7 @@ app.post('/servicos', async(req, res)=>{
 });
 
 
-// localhost:3000/pedidos -> cria novo pedido
+// localhost:3001/pedidos -> cria novo pedido
 app.post('/pedidos', async(req, res)=>{ 
     let create=await pedido.create(
         req.body
@@ -277,7 +277,7 @@ app.put('/editarcliente', async (req, res)=>{
 
 
 /*FINAL DA APLICAÇÃO (let em diante)*/
-let port=process.env.PORT || 3001 // var port que recebe do ambiente uma porta OU vai funcionar na porta 3000
+let port=process.env.PORT || 3001 // var port que recebe do ambiente uma porta OU vai funcionar na porta 3001
 
 //toda vez que eu tenho uma porta onde eu passo as minhas requisições, respostas, etc, o meu servidor vai ouvir se deu certo ou não \/
 app.listen(port,(req,res)=>{

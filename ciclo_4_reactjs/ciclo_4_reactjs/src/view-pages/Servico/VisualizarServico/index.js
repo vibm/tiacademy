@@ -5,6 +5,7 @@ export const VisualizarServico = () => {
     return (
         <div className="p-3">
             <Container>
+                <h1>Visualizar informações do serviço</h1>
                 <Table striped hover>
                     <thead>
                         <tr>
@@ -35,7 +36,6 @@ export const VisualizarServico = () => {
                         </tr>
                     </tbody>
                 </Table>
-
             </Container>
         </div>
     );
