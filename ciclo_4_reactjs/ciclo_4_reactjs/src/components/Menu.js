@@ -12,8 +12,7 @@ import {
 
 export const Menu = (props) => {
   const [isOpen, setIsOpen] = useState(false);
-
-  const toggle = () => setIsOpen(!isOpen); //se diminuir a tela ele encolhe o menu em um botão com 3 riscos
+  const toggle = () => setIsOpen(!isOpen); 
   return (
     <div>
       <Navbar color="info" dark expand="md">
@@ -26,13 +25,13 @@ export const Menu = (props) => {
                 <NavLink href="/">Home</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/Cliente/">Cliente</NavLink>
+                <NavLink href="/visualizarcliente">Clientes</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/Pedido/">Pedido</NavLink>
+                <NavLink href="/visualizarservico">Serviços</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/Servico/">Serviço</NavLink>
+                <NavLink href="/visualizarpedido">Pedidos</NavLink>
               </NavItem>
             </Nav>
           </Collapse>

@@ -5,9 +5,11 @@ import { Home } from './view-pages/Home/';
 import { VisualizarCliente } from './view-pages/Cliente/VisualizarCliente';
 import { VisualizarPedido } from './view-pages/Pedido/VisualizarPedido';
 import { VisualizarServico } from './view-pages/Servico/VisualizarServico';
+import { Cadastrar } from './view-pages/Servico/CadastrarServico';
 
 import { Menu } from './components/Menu';
 import { Servico } from './view-pages/Servico/Servico';
+
 
 
 function App() {
@@ -21,6 +23,7 @@ function App() {
           <Route path="/VisualizarPedido" component={VisualizarPedido} />
           <Route path="/VisualizarServico" component={VisualizarServico} />
           <Route path="/servico/:id" component={Servico}/>
+          <Route path="/cadastrarservico" component={Cadastrar}/>
         </Switch>
       </Router>
     </div>

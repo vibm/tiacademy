@@ -38,16 +38,24 @@ export const VisualizarServico = () => {
 
     return (
         <div className="p-3">
-            <Container>
-                <h1>Visualizar informações do serviço</h1>
-                {status.type === 'error' ? <Alert color="danger">{status.message}</Alert> : ""} {/*se for verdadeiro, mostrar o Alert. se não (':'), não mostra nada */}
+            <Container>                
+                {status.type === 'error' ? <Alert color="danger">{status.message}</Alert> : ""} {/*se for verdadeiro, mostrar o Alert. se não (':'), não mostra nada
+
+                 */}<div className="d-flex">
+                    <div className="mr-auto p-2">
+                        <h1>Informações do Serviço</h1>
+                    </div>
+                    <div className="p-2">
+                        <Link to="/cadastrarservico" className="btn btn-outline-primary btn-sm">Cadastrar</Link>
+                    </div>
+                </div>
                 <Table striped hover>
                     <thead>
                         <tr>
                             <th>ID</th>
                             <th>Serviço</th>
                             <th>Descrição</th>
-                            <th>Ações</th>
+                            <th className="text-center">Ações</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -57,8 +65,7 @@ export const VisualizarServico = () => {
                                 <td>{item.nome}</td>
                                 <td>{item.descricao}</td>
                                 <td className="text-center">
-                                    <Link to={"/servico/"+item.id}
-                                className="btn btn-outline-primary btnsm">Consultar</Link>
+                                    <Link to={"/servico/"+item.id} className="btn btn-outline-primary btnsm">Consultar</Link>
                                 </td>
                             </tr>
                         ))}
@@ -68,5 +75,3 @@ export const VisualizarServico = () => {
         </div>
     );
 };
-
-/*<a href="/VisualizarServico" className="btn btn-outline-success btn-sm">Visualizar Servico</a>*/
