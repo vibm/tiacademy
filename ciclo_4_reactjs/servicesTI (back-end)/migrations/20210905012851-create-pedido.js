@@ -9,17 +9,17 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       ClienteId: {
-        allowNull: false, //allowNull: FALSE FAZ COM QUE O DADO INSERIDO SEJA OBRIGATÓRIO
+        allowNull: false, //allowNull: false = dado obrigatório
         type: Sequelize.INTEGER,
         references:{
-          model: 'clientes', //REFERENCIA A BASE DE DADOS
-          key: 'id' // COM A CHAVE PRIMÁRIA ID
+          model: 'clientes', //referencia a base de dados
+          key: 'id' // chave primária: id
         },
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE'
       },
       ServicoId: {
-        allowNull: false, //allowNull: FALSE FAZ COM QUE O DADO INSERIDO SEJA OBRIGATÓRIO
+        allowNull: false,
         type: Sequelize.INTEGER,
         references:{
           model: 'servicos',

@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Cliente.hasMany(models.Pedido); // 'CLIENTE' E 'PEDIDO' SÃO OS NOMES DAS CLASSES
+      Cliente.hasMany(models.Pedido); // 'cliente' e 'pedido' são os nomes das classes
     }
   };
   Cliente.init({
