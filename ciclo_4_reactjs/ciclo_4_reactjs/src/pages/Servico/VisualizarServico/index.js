@@ -18,7 +18,7 @@ export const VisualizarServico = () => {
 
     //função assíncrona getServicos
     const getServicos = async () => {
-        await axios.get(api + "/listaservicos") //api+'' - concatenou o api que está em config>index.js (localhost:3001) com a listaservicos
+        await axios.get(api + "/listaservicos/") //api+'' - concatenou o api que está em config>index.js (localhost:3001) com a listaservicos
             .then((response) => {
                 console.log(response.data.servicos);
                 setData(response.data.servicos);
@@ -46,7 +46,7 @@ export const VisualizarServico = () => {
                         <h1>Informações do Serviço</h1>
                     </div>
                     <div className="p-2">
-                        <Link to="/cadastrarservico" className="btn btn-outline-primary btn-sm">Cadastrar</Link>
+                        <Link to="/cadastrar-servico" className="btn btn-outline-primary btn-sm">Cadastrar</Link>
                     </div>
                 </div>
                 <Table striped hover>

@@ -32,7 +32,7 @@ export const Servico = (props) => {
                         <h1>Informações do Serviço</h1>
                     </div>
                     <div className="p-2">
-                        <Link to="/visualizarservico" className="btn btn-outline-primary btn-sm">Serviços</Link>
+                        <Link to="/visualizar-servico" className="btn btn-outline-primary btn-sm">Serviços</Link>
                     </div>
                 </div>
                 <div>
