@@ -4,7 +4,7 @@ import { useState } from "react";
 import axios from "axios";
 import { api } from "../../../config";
 
-export const Cadastrar = () => {
+export const CadastrarServico = () => {
 
     const [servico, setServico] = useState({
         nome:'',
