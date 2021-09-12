@@ -67,12 +67,20 @@ app.post('/servicos', async (req, res) => {
 app.post('/pedidos', async (req, res) => {
     let create = await pedido.create(
         req.body
-    );
-    res.send('Novo pedido feito');
+    ).then(function () {
+        return res.json({
+            error: false,
+            message: "Pedido criado com sucesso!"
+        })
+    }).catch(function (erro) {
+        return res.status(400).json({
+            error: true,
+            message: "Erro no cadastro do pedido."
+        })
+    });
 });
 
-
-//criei nova rota 'listaservicos' - Encontra todos os serviços
+// nova rota 'listaservicos' - Consulta todos os serviços em ordem de nome descrescente
 app.get('/listaservicos', async (req, res) => {
     await servico.findAll({
         order: [['nome', 'DESC']]
@@ -81,7 +89,7 @@ app.get('/listaservicos', async (req, res) => {
     });
 });
 
-//criei nova rota 'ofertas' - Conta quantos serviços tem
+// nova rota 'ofertas' - Conta quantos serviços tem
 app.get('/ofertas', async (req, res) => {
     await servico.count('id')
         .then(function (servicos) {
@@ -100,7 +108,7 @@ app.get('/servico/:id', async (req, res) => {
         }).catch(function (erro) {
             return res.status(400).json({
                 error: true,
-                message: "Código não está cadastrado!"
+                message: "Erro: Código não está cadastrado!"
             });
         });
 });
@@ -172,12 +180,12 @@ app.delete('/apagarcliente/:id', (req, res) => {
     }).then(function () {
         return res.json({
             error: false,
-            message: "Cliente foi excluido com sucesso"
+            message: "Cliente excluido com sucesso"
         });
     }).catch(function (erro) {
         return res.status(400).json({
             error: true,
-            message: "Não foi possível excluir o cliente."
+            message: "Erro ao tentar excluir."
         });
     });
 });
