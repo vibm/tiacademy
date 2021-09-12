@@ -19,9 +19,9 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path="/VisualizarCliente" component={VisualizarCliente} />
-          <Route path="/VisualizarPedido" component={VisualizarPedido} />
-          <Route path="/VisualizarServico" component={VisualizarServico} />
+          <Route exact path="/visualizarcliente" component={VisualizarCliente} />
+          <Route exact path="/visualizarpedido" component={VisualizarPedido} />
+          <Route exact path="/visualizarservico" component={VisualizarServico} />
           <Route path="/servico/:id" component={Servico}/>
           <Route path="/cadastrarservico" component={Cadastrar}/>
         </Switch>
