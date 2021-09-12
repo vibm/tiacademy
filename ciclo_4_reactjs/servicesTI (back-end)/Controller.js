@@ -14,7 +14,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const { Op, json } = require("sequelize"); 
+const { Op, json } = require("sequelize");
 
 //uma variável para cada objeto
 let cliente = models.Cliente;
@@ -192,6 +192,17 @@ app.delete('/apagarcliente/:id', (req, res) => {
     });
 });
 
+/* DESAFIO AULA 3
+    Qual é o valor total que o cliente X gastou na ServicesTI?
+    await User.sum('age', { where: { age: { [Op.gt]: 5 } } }); // 50
+*/
+app.get('/totalCliente/:id', async (req, res) => {
+    await pedido.sum('valor', { where: { ClienteId: { [Op.eq]: req.params.id } } })
+        .then(function (totalCliente) {
+            res.json({ totalCliente })
+        });
+});
+
 
 /*EXERCÍCIOS AULA 4*/
 
@@ -242,16 +253,35 @@ app.get('/quantidadepedidos', async (req, res) => {
         });
 });
 
-/* DESAFIO AULA 4
-    Qual é o valor total que o cliente X gastou na ServicesTI?
-    await User.sum('age', { where: { age: { [Op.gt]: 5 } } }); // 50
-*/
-app.get('/totalCliente/:id', async (req, res) => {
-    await pedido.sum('valor', { where: { ClienteId: { [Op.eq]: req.params.id } } })
-        .then(function (totalCliente) {
-            res.json({ totalCliente })
-        });
+//DESAFIO AULA 4
+// 1. listar pedidos de um cliente específico
+app.get('/pedidoscliente/:id', async (req, res) => {
+    await pedido.findAll({
+        where: { ClienteId: [req.params.id] }
+    }).then(function (pedidos) {
+        res.json({ pedidos })
+    });
 });
+
+// 2. alterar pedido usando ClienteId
+app.put('/editarpedido/:ClienteId', async (req, res) => {
+    pedido.update(req.body, {
+        where: { ClienteId: req.body.ClienteId }
+    }).then(function () {
+        return res.json({
+            error: false,
+            message: "Pedido modificado com sucesso."
+        });
+    }).catch(function (erro) {
+        return res.status(400).json({
+            error: true,
+            message: "Não foi possível modificar o pedido."
+        });
+    });
+});
+
+
+
 
 /**EXERCÍCIOS AULA 5
  1. Faça uma busca por serviços de clientes passando o id do cliente no corpo da requisição
