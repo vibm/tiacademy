@@ -21,15 +21,9 @@ function App() {
       <Menu />
         <Switch>
           <Route exact path="/" component={Home} />
-<<<<<<< Updated upstream
-          <Route exact path="/visualizarcliente" component={VisualizarCliente} />
-          <Route exact path="/visualizarpedido" component={VisualizarPedido} />
-          <Route exact path="/visualizarservico" component={VisualizarServico} />
-=======
           <Route exact path="/visualizar-cliente" component={VisualizarCliente} />
           <Route exact path="/visualizar-pedido" component={VisualizarPedido} />
           <Route exact path="/visualizar-servico" component={VisualizarServico} />
->>>>>>> Stashed changes
           <Route path="/servico/:id" component={Servico}/>
           <Route path="/cadastrar-servico" component={CadastrarServico}/>
         </Switch>
