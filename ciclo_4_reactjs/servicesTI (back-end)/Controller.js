@@ -99,7 +99,7 @@ app.get('/ofertas', async (req, res) => {
         });
 });
 
-// :id é um parametro usado ali embaixo
+// :id é um parametro usado abaixo
 app.get('/servico/:id', async (req, res) => {
     servico.findByPk(req.params.id)
         .then(servico => {
@@ -352,6 +352,6 @@ app.listen(port, (req, res) => {
 
 /*
 
-TOTAL DE ROTAS CRIADAS:  22
+TOTAL DE ROTAS CRIADAS:  24
 
 */

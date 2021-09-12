@@ -12,7 +12,7 @@ import {
 
 export const Menu = (props) => {
   const [isOpen, setIsOpen] = useState(false);
-  const toggle = () => setIsOpen(!isOpen); 
+  const toggle = () => setIsOpen(!isOpen);
   return (
     <div>
       <Navbar color="info" dark expand="md">
@@ -25,13 +25,13 @@ export const Menu = (props) => {
                 <NavLink href="/">Home</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/visualizarcliente">Clientes</NavLink>
+                <NavLink href="/visualizar-cliente">Clientes</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/visualizarservico">Serviços</NavLink>
+                <NavLink href="/visualizar-servico">Serviços</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/visualizarpedido">Pedidos</NavLink>
+                <NavLink href="/visualizar-pedido">Pedidos</NavLink>
               </NavItem>
             </Nav>
           </Collapse>

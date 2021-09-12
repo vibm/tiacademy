@@ -1,31 +1,41 @@
 import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 //Para cada componente criado, devo importar aqui no App.js
-import { Home } from './view-pages/Home/';
-import { VisualizarCliente } from './view-pages/Cliente/VisualizarCliente';
-import { VisualizarPedido } from './view-pages/Pedido/VisualizarPedido';
-import { VisualizarServico } from './view-pages/Servico/VisualizarServico';
-import { Cadastrar } from './view-pages/Servico/CadastrarServico';
+//import index.js das páginas, já que é o único arquivo lá
+import { Home } from './pages/Home/'; 
+import { VisualizarCliente } from './pages/Cliente/VisualizarCliente';
+import { VisualizarPedido } from './pages/Pedido/VisualizarPedido';
+import { VisualizarServico } from './pages/Servico/VisualizarServico';
+import { CadastrarServico } from './pages/Servico/CadastrarServico';
 
 import { Menu } from './components/Menu';
-import { Servico } from './view-pages/Servico/Servico';
+import { Servico } from './pages/Servico/Servico';
 
 
 
 function App() {
   return (
     <div>
-      <Menu />
+      
       <Router>
+      <Menu />
         <Switch>
           <Route exact path="/" component={Home} />
+<<<<<<< Updated upstream
           <Route exact path="/visualizarcliente" component={VisualizarCliente} />
           <Route exact path="/visualizarpedido" component={VisualizarPedido} />
           <Route exact path="/visualizarservico" component={VisualizarServico} />
+=======
+          <Route exact path="/visualizar-cliente" component={VisualizarCliente} />
+          <Route exact path="/visualizar-pedido" component={VisualizarPedido} />
+          <Route exact path="/visualizar-servico" component={VisualizarServico} />
+>>>>>>> Stashed changes
           <Route path="/servico/:id" component={Servico}/>
-          <Route path="/cadastrarservico" component={Cadastrar}/>
+          <Route path="/cadastrar-servico" component={CadastrarServico}/>
         </Switch>
+        
       </Router>
+      
     </div>
   );
 }

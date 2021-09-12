@@ -15,6 +15,8 @@ const app=express();
 app.use(cors());
 app.use(express.json());
 
+const { Op, json } = require("sequelize");
+
 let cliente=models.Cliente;
 let servico=models.Servico;
 let pedido=models.Pedido;
