@@ -14,6 +14,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+const { Op, json } = require("sequelize"); 
+
 //uma variável para cada objeto
 let cliente = models.Cliente;
 let servico = models.Servico;
@@ -245,7 +247,7 @@ app.get('/quantidadepedidos', async (req, res) => {
     await User.sum('age', { where: { age: { [Op.gt]: 5 } } }); // 50
 */
 app.get('/totalCliente/:id', async (req, res) => {
-    await pedido.sum('valor', { where: { ClienteId: { [Op.gt]: req.params.id } } })
+    await pedido.sum('valor', { where: { ClienteId: { [Op.eq]: req.params.id } } })
         .then(function (totalCliente) {
             res.json({ totalCliente })
         });
