@@ -1,101 +1,85 @@
-import { Alert, Button, Container, Form, FormGroup, Input, Label } from "reactstrap";
-import { Link } from "react-router-dom";
-import { useState } from "react";
-import axios from "axios";
-import { api } from "../../../config";
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Alert, Container, Table } from 'reactstrap';
 
-//NÃO IMPORTA SPINNER?
+import { api } from '../../../config';
 
+export const VisualizarServico = () => {
 
-export const Cadastrar = () => {
-
-    const [servico, setServico] = useState({
-        nome:'',
-        descricao:''
-    })
+   
+    const [data, setData] = useState([]);
 
     const [status, setStatus] = useState({
-        formSave: false,
         type: '',
         message: ''
-    })
+    });
 
-    const valorInput = e => setServico({...servico, [e.target.name]:e.target.value})
+    
+    const apagarServicos = async (idServico) => {
+        console.log(idServico)
 
-    const cadServico = async e => {
-        e.preventDefault();
-        //console.log(servico);
-        setStatus({
-            formSave:true
-        });
         const headers = {
-            'Content-Type': 'application/json'
-        }
+            'Content-Type':'application/json'
+        };
 
-        await axios.post(api+"/servicos",servico, {headers})
-        .then((response) => {
-            //console.log(response.data.message);
-            if(response.data.error){
+        await axios.delete(api + "/apagarservico/"+idServico, {headers}) //NÃO TEM apagarcliente NO CONTROLLER.JS
+            .then((response) => {
+                console.log(response.data.servicos);
+                setData(response.data.servicos);
+                getServicos();
+            })
+            .catch(() => {
                 setStatus({
-                    formSave: false,
                     type: 'error',
-                    message: response.data.message
-                });
-            }else{
-                setStatus({
-                    formSave: false,
-                    type: 'success',
-                    message: response.data.message
-                });
-            }
-        })
-        .catch(()=>{
-            setStatus({
-                formSave: false,
-                type: 'error',
-                message: 'Erro: Sem conexão com a API.'
+                    message: 'Erro: Sem conexão com a API.'
+                })
             });
-        })
     }
 
+    useEffect(() => {
+        getServicos();
+    }, []);
+    
+
     return (
-        <div>
-            <Container>
-                <div className="d-flex">
+        <div className="p-3">
+            <Container>                
+                {status.type === 'error' ? <Alert color="danger">{status.message}</Alert> : ""} <div className="d-flex">
                     <div className="mr-auto p-2">
-                        <h1>Cadastrar Serviço</h1>
+                        <h1>Informações do Serviço</h1>
                     </div>
                     <div className="p-2">
-                        <Link to="/visualizarservico" className="btn btn-outline-primary btn-sm">Listar</Link>
+                        <Link to="/cadastrarservico" className="btn btn-outline-primary btn-sm">Cadastrar</Link>
                     </div>
                 </div>
-
-                <hr className="m-1"/>
-
-                {status.type === 'error' ? <Alert color="danger">{status.message}</Alert> : ""} 
-
-                {status.type === 'success' ? <Alert color="success">{status.message}</Alert> : ""} 
-
-                <Form className="p-2" onSubmit={cadServico}>
-                    <FormGroup className="p-2">
-                        <Label>Nome</Label>
-                        <Input type="text" name="nome" placeholder="Nome do serviço" onChange={valorInput} ></Input>
-                    </FormGroup>
-
-                    <FormGroup className="p-2">
-                        <Label>Descrição</Label>
-                        <Input type="text" name="descricao" placeholder="Descrição do serviço" onChange={valorInput}></Input>
-                    </FormGroup>
-                    {status.formSave ?
-                    <Button type="submit" outline color="info" disabled>Salvando...
-                    <Spinner size="sm" color="success"/></Button> :
-                    <Button type="submit" outline color="info">Cadastrar</Button>}
-                </Form>
-
-                
-
+                <Table striped hover>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Serviço</th>
+                            <th>Descrição</th>
+                            <th className="text-center">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {data.map(item => (
+                            <tr key={item.id}>
+                                <td>{item.id}</td>
+                                <td>{item.nome}</td>
+                                <td>{item.descricao}</td>
+                                <td className="text-center">
+                                    <Link to={"/servico/"+item.id} className="btn btn-outline-primary btnsm">Consultar</Link>
+                                    <Link to={"/editarservico/"+item.id}
+                                    className="btn btn-outline-warning btn-sm">Editar</Link>
+                                    <span className="btn btn-outline-danger btn-sm mr-1"
+                                        onClick={()=> apagarServico(item.id)}>Excluir</span>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </Table>
             </Container>
-
         </div>
     );
 };
