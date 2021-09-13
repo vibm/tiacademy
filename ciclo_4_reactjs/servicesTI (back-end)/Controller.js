@@ -31,6 +31,14 @@ app.get('/', function (req, res) {
 
 // cria novo cliente -> localhost:3001/clientes
 app.post('/clientes', async (req, res) => {
+    await aguardar(3000);
+
+    function aguardar(ms) {
+        return new Promise((resolve) => {
+            setTimeout(resolve.ms);
+        });
+    };
+
     let create = await cliente.create(
         req.body
     ).then(function () {
@@ -49,6 +57,14 @@ app.post('/clientes', async (req, res) => {
 
 // cria novo serviço -> localhost:3001/servicos
 app.post('/servicos', async (req, res) => {
+    await aguardar(3000);
+
+    function aguardar(ms) {
+        return new Promise((resolve) => {
+            setTimeout(resolve.ms);
+        });
+    };
+
     let create = await servico.create(
         req.body
     ).then(function () {
@@ -67,6 +83,14 @@ app.post('/servicos', async (req, res) => {
 
 // cria novo pedido -> localhost:3001/pedidos
 app.post('/pedidos', async (req, res) => {
+    await aguardar(3000);
+
+    function aguardar(ms) {
+        return new Promise((resolve) => {
+            setTimeout(resolve.ms);
+        });
+    };
+
     let create = await pedido.create(
         req.body
     ).then(function () {

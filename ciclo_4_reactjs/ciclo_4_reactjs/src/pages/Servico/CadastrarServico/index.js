@@ -12,6 +12,7 @@ export const Cadastrar = () => {
     })
 
     const [status, setStatus] = useState({
+        formSave: false,
         type: '',
         message: ''
     })
@@ -20,7 +21,10 @@ export const Cadastrar = () => {
 
     const cadServico = async e => {
         e.preventDefault();
-        console.log(servico);
+        //console.log(servico);
+        setStatus({
+            formSave:true
+        });
         const headers = {
             'Content-Type': 'application/json'
         }
@@ -30,11 +34,13 @@ export const Cadastrar = () => {
             //console.log(response.data.message);
             if(response.data.error){
                 setStatus({
+                    formSave: false,
                     type: 'error',
                     message: response.data.message
                 });
             }else{
                 setStatus({
+                    formSave: false,
                     type: 'success',
                     message: response.data.message
                 });
@@ -42,6 +48,7 @@ export const Cadastrar = () => {
         })
         .catch(()=>{
             setStatus({
+                formSave: false,
                 type: 'error',
                 message: 'Erro: Sem conexão com a API.'
             });
@@ -76,9 +83,13 @@ export const Cadastrar = () => {
                         <Label>Descrição</Label>
                         <Input type="text" name="descricao" placeholder="Descrição do serviço" onChange={valorInput}></Input>
                     </FormGroup>
+                    {status.formSave ?
+                    <Button type="submit" outline color="info" disabled>Salvando...
+                    <Spinner size="sm" color="success"/></Button> :
+                    <Button type="submit" outline color="info">Cadastrar</Button>}
                 </Form>
 
-                <Button type="submit" outline color="info">Cadastrar</Button>
+                
 
             </Container>
 
