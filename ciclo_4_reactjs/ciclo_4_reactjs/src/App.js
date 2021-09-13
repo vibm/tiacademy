@@ -6,7 +6,8 @@ import { Home } from './pages/Home/';
 import { VisualizarCliente } from './pages/Cliente/VisualizarCliente';
 import { VisualizarPedido } from './pages/Pedido/VisualizarPedido';
 import { VisualizarServico } from './pages/Servico/VisualizarServico';
-import { CadastrarServico } from './pages/Servico/CadastrarServico';
+import { Cadastrar } from './pages/Servico/Cadastrar';
+import { Editar } from './pages/Servico/Editar';
 
 import { Menu } from './components/Menu';
 import { Servico } from './pages/Servico/Servico';
@@ -25,7 +26,8 @@ function App() {
           <Route exact path="/visualizar-pedido" component={VisualizarPedido} />
           <Route exact path="/visualizar-servico" component={VisualizarServico} />
           <Route path="/servico/:id" component={Servico}/>
-          <Route path="/cadastrar-servico" component={CadastrarServico}/>
+          <Route path="/cadastrar-servico" component={Cadastrar}/>
+          <Route path="/editar-servico/:id" component={Editar}/>
         </Switch>
         
       </Router>

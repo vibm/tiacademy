@@ -31,8 +31,11 @@ export const Servico = (props) => {
                     <div className="mr-auto p-2">
                         <h1>Informações do Serviço</h1>
                     </div>
+                    
                     <div className="p-2">
                         <Link to="/visualizarservico" className="btn btn-outline-primary btn-sm">Serviços</Link>
+                        <Link to={"/editarservico/"+data.id}
+                                    className="btn btn-outline-warning btn-sm">Editar</Link>
                     </div>
                 </div>
                 <div>

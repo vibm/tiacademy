@@ -4,6 +4,9 @@ import { useState } from "react";
 import axios from "axios";
 import { api } from "../../../config";
 
+//NÃO IMPORTA SPINNER?
+
+
 export const Cadastrar = () => {
 
     const [servico, setServico] = useState({
