@@ -1,10 +1,9 @@
 // ListaServico (VisualizarServico) mostra a lista dos serviços
 import axios from 'axios';
+// import de um {objeto} que vem de 'algum lugar';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-// import de um {objeto} que vem de 'algum lugar';
-import { Alert, Container, Table } from 'reactstrap';
-
+import { Alert, Contai
 import { api } from '../../../config';
 
 export const ListaServico = () => {
@@ -52,8 +51,7 @@ export const ListaServico = () => {
     return (
         <div className="p-3">
             <Container>                
-                {/* {status.type === 'error' ? <Alert color="danger">{status.message}</Alert> : ""} se for verdadeiro, mostrar o Alert. se não (':'), não mostra nada  ----- IGUAL A LINHA 54*/}
-
+                 
                  <div className="d-flex">
                     <div className="m-auto p-2">
                         <h1>Visualizar Informações do Serviço</h1>
@@ -63,7 +61,8 @@ export const ListaServico = () => {
                     </div>
                 </div>
 
-                 {status.type ==='error' ? <Alert color="danger">{status.message}</Alert> : ""}
+                 {status.type ==='error' ? <Alert color="danger">{status.message}</Alert> : ""} {/* se for verdadeiro, mostrar o Alert. se não (':'), não mostra nada */}
+
 
                 <Table striped hover>
                     <thead>
