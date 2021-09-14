@@ -3,38 +3,46 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import { api } from "../../../config";
+//SPINNER NÃO IMPORTADO
 
-export const CadastrarServico = () => {
 
-    const [servico, setServico] = useState({
+export const Cadastrar = () => {
+
+    const [cliente, setCliente] = useState({
         nome:'',
         descricao:''
     })
 
     const [status, setStatus] = useState({
+        formSave: false,
         type: '',
         message: ''
     })
 
-    const valorInput = e => setServico({...servico, [e.target.name]:e.target.value})
+    const valorInput = e => setCliente({...cliente, [e.target.name]:e.target.value})
 
-    const cadServico = async e => {
+    const cadCliente = async e => {
         e.preventDefault();
-        console.log(servico);
+        //console.log(cliente);
+        setStatus({
+            formSave:true
+        });
         const headers = {
             'Content-Type': 'application/json'
         }
 
-        await axios.post(api+"/servicos",servico, {headers})
+        await axios.post(api+"/clientes",cliente, {headers})
         .then((response) => {
             //console.log(response.data.message);
             if(response.data.error){
                 setStatus({
+                    formSave: false,
                     type: 'error',
                     message: response.data.message
                 });
             }else{
                 setStatus({
+                    formSave: false,
                     type: 'success',
                     message: response.data.message
                 });
@@ -42,6 +50,7 @@ export const CadastrarServico = () => {
         })
         .catch(()=>{
             setStatus({
+                formSave: false,
                 type: 'error',
                 message: 'Erro: Sem conexão com a API.'
             });
@@ -52,11 +61,11 @@ export const CadastrarServico = () => {
         <div>
             <Container>
                 <div className="d-flex">
-                    <div className="mr-auto p-2">
-                        <h1>Cadastrar Serviço</h1>
+                    <div className="m-auto p-2">
+                        <h1>Cadastrar Clientes</h1>
                     </div>
                     <div className="p-2">
-                        <Link to="/visualizarservico" className="btn btn-outline-primary btn-sm">Listar</Link>
+                        <Link to="/visualizarcliente" className="btn btn-outline-primary btn-sm">Listar</Link>
                     </div>
                 </div>
 
@@ -66,19 +75,23 @@ export const CadastrarServico = () => {
 
                 {status.type === 'success' ? <Alert color="success">{status.message}</Alert> : ""} 
 
-                <Form className="p-2" onSubmit={cadServico}>
+                <Form className="p-2" onSubmit={cadCliente}>
                     <FormGroup className="p-2">
                         <Label>Nome</Label>
-                        <Input type="text" name="nome" placeholder="Nome do serviço" onChange={valorInput} ></Input>
+                        <Input type="text" name="nome" placeholder="Nome do cliente" onChange={valorInput} ></Input>
                     </FormGroup>
 
                     <FormGroup className="p-2">
                         <Label>Descrição</Label>
-                        <Input type="text" name="descricao" placeholder="Descrição do serviço" onChange={valorInput}></Input>
+                        <Input type="text" name="descricao" placeholder="Descrição do cliente" onChange={valorInput}></Input>
                     </FormGroup>
+                    {status.formSave ?
+                    <Button type="submit" outline color="info" disabled>Salvando...
+                    <Spinner size="sm" color="success"/></Button> :
+                    <Button type="submit" outline color="info">Cadastrar</Button>}
                 </Form>
 
-                <Button type="submit" outline color="info">Cadastrar</Button>
+                
 
             </Container>
 

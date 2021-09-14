@@ -8,7 +8,7 @@ export const Pedido = (props) => {
     console.log(props.match.params.id);
 
     const [data, setData] = useState([]);
-    const [id, setId] = useState(props.match.params.id);
+    const [id] = useState(props.match.params.id);
 
     useEffect(() => {
         const getPedido = async () => {
@@ -28,7 +28,7 @@ export const Pedido = (props) => {
         <div>
             <Container>
                 <div className="d-flex">
-                    <div className="mr-auto p-2">
+                    <div className="m-auto p-2">
                         <h1>Informações do Pedido</h1>
                     </div>
                     <div className="p-2">

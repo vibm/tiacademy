@@ -1,3 +1,4 @@
+//VisualizarServico tem a lista dos serviços (ver Servico)
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -18,7 +19,7 @@ export const VisualizarServico = () => {
 
     //função assíncrona getServicos
     const getServicos = async () => {
-        await axios.get(api + "/listaservicos/") //api+'' - concatenou o api que está em config>index.js (localhost:3001) com a listaservicos
+        await axios.get(api + "/listaservicos") //api+'' - concatenou o api que está em config>index.js (localhost:3001) com a listaservicos
             .then((response) => {
                 console.log(response.data.servicos);
                 setData(response.data.servicos);
@@ -42,11 +43,11 @@ export const VisualizarServico = () => {
                 {status.type === 'error' ? <Alert color="danger">{status.message}</Alert> : ""} {/*se for verdadeiro, mostrar o Alert. se não (':'), não mostra nada
 
                  */}<div className="d-flex">
-                    <div className="mr-auto p-2">
+                    <div className="m-auto p-2">
                         <h1>Informações do Serviço</h1>
                     </div>
                     <div className="p-2">
-                        <Link to="/cadastrar-servico" className="btn btn-outline-primary btn-sm">Cadastrar</Link>
+                        <Link to="/cadastrarservico" className="btn btn-outline-primary btn-sm">Cadastrar</Link>
                     </div>
                 </div>
                 <Table striped hover>
@@ -65,7 +66,9 @@ export const VisualizarServico = () => {
                                 <td>{item.nome}</td>
                                 <td>{item.descricao}</td>
                                 <td className="text-center">
-                                    <Link to={"/servico/"+item.id} className="btn btn-outline-primary btnsm">Consultar</Link>
+                                    <Link to={"/servico/"+item.id} className="btn btn-outline-primary btn-sm m-1">Consultar</Link>
+                                    <Link to={"/editar-servico/"+item.id}
+                                    className="btn btn-outline-warning btn-sm">Editar</Link>
                                 </td>
                             </tr>
                         ))}

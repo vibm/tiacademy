@@ -17,7 +17,7 @@ export const VisualizarPedido = () => {
 
     //função assíncrona getPedidos
     const getPedidos = async () => {
-        await axios.get(api + "/listapedidos/") //api+'' - concatenou o api que está em config>index.js (localhost:3001) com a listapedidos
+        await axios.get(api + "/listapedidos") //api+'' - concatenou o api que está em config>index.js (localhost:3001) com a listapedidos
             .then((response) => {
                 console.log(response.data.pedidos);
                 setData(response.data.pedidos);
