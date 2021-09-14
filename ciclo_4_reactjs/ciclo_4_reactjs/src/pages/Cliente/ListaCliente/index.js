@@ -80,7 +80,7 @@ export const VisualizarCliente = () => {
         <div>
             <Container>
                 <div className="d-flex">
-                    <div className="mr-auto p-2">
+                    <div className="m-auto p-2">
                         <h1>Página do Cliente</h1>
                     </div>
                     <div className="p-2">

@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { Alert, Button, Container, Form, FormGroup, Input, Label, } from 'reactstrap'; /* NÃO UTILIZADOS? Alert, Container, Table*/
 import { api } from '../../../config';
+//SPINNER NÃO IMPORTADO
+
 
 export const Cadastrar = () => {
 
@@ -11,6 +13,7 @@ export const Cadastrar = () => {
         descricao: ''
     });
 
+    //tratamento de erro
     const [status, setStatus] = useState({
         formSave:false,
         type: '',
@@ -95,7 +98,7 @@ export const Cadastrar = () => {
         <div className="p-3">
             <Container>
                 {status.type === 'error' ? <Alert color="danger">{status.message}</Alert> : ""} <div className="d-flex">
-                    <div className="mr-auto p-2">
+                    <div className="m-auto p-2">
                         <h1>Cadastrar Serviço</h1>
                     </div>
                     <div className="p-2">
@@ -104,8 +107,7 @@ export const Cadastrar = () => {
                 </div>
 
 
- 
-
+                {/*tratamento de erro */}
                 <hr className="m-1" />
 
                 {status.type ==='error' ? <Alert color="danger">
@@ -113,6 +115,9 @@ export const Cadastrar = () => {
 
                 {status.type === 'success' ? <Alert color="success">
                     {status.message}</Alert>:""}
+
+
+
 
                 <Form className="p-2" onSubmit={cadServico}>
                     <FormGroup className="p-2">
@@ -157,7 +162,7 @@ export const Cadastrar = () => {
                                     <Link to={"/servico/" + item.id} className="btn btn-outline-primary btnsm">Consultar</Link>
                                     <Link to={"/editarservico/" + item.id}
                                         className="btn btn-outline-warning btn-sm">Editar</Link>
-                                    <span className="btn btn-outline-danger btn-sm mr-1"
+                                    <span className="btn btn-outline-danger btn-sm m-1"
                                         onClick={() => apagarServico(item.id)}>Excluir</span>
                                 </td>
                             </tr>

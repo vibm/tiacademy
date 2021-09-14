@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import { api } from "../../../config";
+//SPINNER NÃO IMPORTADO
+
 
 export const Cadastrar = () => {
 
@@ -59,7 +61,7 @@ export const Cadastrar = () => {
         <div>
             <Container>
                 <div className="d-flex">
-                    <div className="mr-auto p-2">
+                    <div className="m-auto p-2">
                         <h1>Cadastrar Clientes</h1>
                     </div>
                     <div className="p-2">
