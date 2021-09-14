@@ -6,7 +6,7 @@ import { Alert, Container, Table } from 'reactstrap';
 
 import { api } from '../../../config';
 
-export const VisualizarCliente = () => {
+export const ListaCliente = () => {
 
     //iniciar um array vazio que recebe os dados
     const [data, setData] = useState([]);

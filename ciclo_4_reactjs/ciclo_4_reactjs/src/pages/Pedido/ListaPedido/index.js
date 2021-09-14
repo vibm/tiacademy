@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { Alert, Container, Table } from 'reactstrap';
 import { api } from '../../../config';
 
-export const VisualizarPedido = () => {
+export const ListaPedido = () => {
 
     //iniciar um array vazio que recebe os dados
     const [data, setData] = useState([]);

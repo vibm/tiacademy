@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { Alert, Button, Container, Form, FormGroup, Input, Label, } from 'reactstrap'; /* NÃO UTILIZADOS? Alert, Container, Table*/
+import { Alert, Button, Container, Form, FormGroup, Input, Label, Spinner, Table, } from 'reactstrap'; /* NÃO UTILIZADOS? Alert, Container, Table*/
 import { api } from '../../../config';
 //SPINNER NÃO IMPORTADO
 
@@ -12,6 +12,8 @@ export const Cadastrar = () => {
         nome: '',
         descricao: ''
     });
+
+    const [data, setData] = useState([]);
 
     //tratamento de erro
     const [status, setStatus] = useState({
@@ -59,6 +61,31 @@ export const Cadastrar = () => {
             });
         });
     };
+
+    const apagarServicos = async (idServico) => {
+        console.log(idServico)
+
+        const headers = {
+            'Content-Type':'application/json'        //OK
+        };
+
+        await axios.delete(api + "/apagarservico/"+idServico, {headers}) //NÃO TEM apagarcliente NO CONTROLLER.JS
+            .then((response) => {
+                console.log(response.data.servicos);
+                setData(response.data.servicos);
+                getServicos();
+            })
+            .catch(() => {
+                setStatus({
+                    type: 'error',
+                    message: 'Erro: Sem conexão com a API.'
+                })
+            });
+    }
+
+    useEffect(() => {
+        getServicos();
+    }, []);
 
     /* const [data, setData] = useState([]);
  

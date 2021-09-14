@@ -201,6 +201,7 @@ app.get('/excluircliente', async (req, res) => {
     });
 });
 
+
 app.delete('/apagarcliente/:id', (req, res) => {
     cliente.destroy({
         where: { id: req.params.id }
@@ -208,6 +209,23 @@ app.delete('/apagarcliente/:id', (req, res) => {
         return res.json({
             error: false,
             message: "Cliente excluido com sucesso"
+        });
+    }).catch(function (erro) {
+        return res.status(400).json({
+            error: true,
+            message: "Erro ao tentar excluir."
+        });
+    });
+});
+
+
+app.delete('/apagarservico/:id', (req, res) => {
+    servico.destroy({
+        where: { id: req.params.id }
+    }).then(function () {
+        return res.json({
+            error: false,
+            message: "Servico excluido com sucesso"
         });
     }).catch(function (erro) {
         return res.status(400).json({

@@ -1,6 +1,8 @@
-import { useState } from 'react';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Alert, Button, Container, Form, FormGroup, Label, Input } from 'reactstrap';
+import { Alert, Button, Container, Form, FormGroup, Label, Input, Spinner } from 'reactstrap';
+import { api } from '../../../config'; 
 //SPINNER NÃO IMPORTADO
 
 
@@ -22,9 +24,40 @@ export const Editar = (props) => {      //props = propriedades
     const edtServico = async e => {  //e --> evento
         e.preventDefault();
 
+       
+
         const headers = {
             'Content-Type': 'application/json'
         };
+                    //copiei /editarservico do controller.js no backend
+                    //atualiza os dados = id, nome, descricao
+        await axios.put(api+"/editarservico", {id, nome, descricao}, {headers})
+        .then((response) => {
+            console.log(response.data.error);
+            console.log(response.data.message);
+            
+        })
+        .catch(() =>{
+            setStatus({
+                type:'error',
+                message:'Erro: Não foi possível acessar a API.'
+            })
+        getServico();
+        },[id]);
+
+    useEffect(() =>{ //consulta
+        const getServico = async () =>{
+            await axios.get(api+"/servico/"+id)
+            .then((response) =>{
+                setNome(response.data.servico.nome);
+                setDescricao(response.data.servico.descricao);
+            })
+            .catch(() =>{
+                console.log("Erro: Não foi possível conecatar a API.")
+            })
+        }
+        getServico();
+    },[id]);
 
     return (
         <div>
@@ -56,13 +89,15 @@ export const Editar = (props) => {      //props = propriedades
                     <FormGroup className="p-2">
                         <Label>Nome</Label>
                         <Input type="text" name="nome"
-                            placeholder="Nome do serviço" />
+                            placeholder="Nome do serviço" value={nome}
+                            onChange={e => setNome(e.target.value)}/>
                     </FormGroup>
 
                     <FormGroup className="p-2">
                         <Label>Descrição</Label>
                         <Input type="text" name="dercricao"
-                            placeholder="Descrição do serviço" />
+                            placeholder="Descrição do serviço" value={descricao}
+                            onChange={e => setDescricao(e.target.value)}/>
                     </FormGroup>
 
                     
@@ -72,7 +107,7 @@ export const Editar = (props) => {      //props = propriedades
                         <Button type="submit" outline color="warning">Salvar</Button>}
 
 
-                    <Button type="reset" outline color="success">Limpar</Button>   {/*botão LIMPAR tipo "reset"*/}
+                    {/* <Button type="reset" outline color="success">Limpar</Button>   {/*botão LIMPAR tipo "reset"*/} 
                 </Form>
 
             </Container>
@@ -89,7 +124,7 @@ export const Editar = (props) => {      //props = propriedades
 
 
 
-import { Link } from "react-router-dom";
+/* import { Link } from "react-router-dom";
 import { useState } from "react/cjs/react.development";
 import { Alert, Button, Container, Form, FormGroup, Input, Label } from "reactstrap"
 
@@ -137,9 +172,10 @@ export const Editar = () => {
                     message: 'Erro: Não foi possível conectar a API.'
                 });
             });
-    }
+    } */
 
-    useEffect(() => {
+
+    /* useEffect(() => {
         const getServico = async () => {
             await axios.get(api + "/servico/" + id)
                 .then((response) => {
@@ -153,6 +189,8 @@ export const Editar = () => {
         }
         getServico();
     }, [id]);
+
+
 
     return (
         <div>
@@ -192,9 +230,9 @@ export const Editar = () => {
                     {/*{status.formSave ?
                         <Button type="submit" outline color="warning" disabled>Salvando...
                             <Spinner size="sm" color="warning" /></Button> :
-                        <Button type="submit" outline color="warning">Salvar</Button>}*/}
+                        <Button type="submit" outline color="warning">Salvar</Button>}*//* }
                 </Form>
             </Container>
         </div>
     )
-}
+} */
