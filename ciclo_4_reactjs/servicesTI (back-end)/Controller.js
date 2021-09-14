@@ -57,7 +57,7 @@ app.post('/clientes', async (req, res) => {
 
 // cria novo serviço -> localhost:3001/servicos
 app.post('/servicos', async (req, res) => {
-    await aguardar(3000);
+   
 
     function aguardar(ms) {
         return new Promise((resolve) => {
@@ -65,7 +65,8 @@ app.post('/servicos', async (req, res) => {
         });
     };
 
-    let create = await servico.create(
+     await servico.create(
+        await aguardar(3000), //"tem que estar embaixo do servico create Aula 4.2 1:34:33"
         req.body
     ).then(function () {
         return res.json({

@@ -1,58 +1,143 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Alert, Container, Table } from 'reactstrap';
-
+import { useEffect, useState } from 'react';
+import { Alert, Button, Container, Form, FormGroup, Input, Label, } from 'reactstrap'; /* NÃO UTILIZADOS? Alert, Container, Table*/
 import { api } from '../../../config';
 
-export const VisualizarServico = () => {
+export const Cadastrar = () => {
 
-   
-    const [data, setData] = useState([]);
+    const [servico, setServico] = useState({
+        nome: '',
+        descricao: ''
+    });
 
     const [status, setStatus] = useState({
+        formSave:false,
         type: '',
         message: ''
     });
 
-    
-    const apagarServicos = async (idServico) => {
-        console.log(idServico)
+    const valorInput = e => setServico({
+        ...servico, [e.target.name]: e.target.value
+    });
+
+    const cadServico = async e => {
+        e.preventDefault();
+
+        setStatus({
+            formSave:true
+        });
 
         const headers = {
-            'Content-Type':'application/json'
-        };
+            'Content-Type':'application/json' //aspas simples
+        }
 
-        await axios.delete(api + "/apagarservico/"+idServico, {headers}) //NÃO TEM apagarcliente NO CONTROLLER.JS
-            .then((response) => {
-                console.log(response.data.servicos);
-                setData(response.data.servicos);
-                getServicos();
-            })
-            .catch(() => {
+        await axios.post(api + "/servicos", servico,{headers}) //tem que ser o post que está no controller.js
+        .then((response) => {
+            if(response.data.error){
                 setStatus({
-                    type: 'error',
-                    message: 'Erro: Sem conexão com a API.'
-                })
+                    formSave: false,
+                    type:'error',
+                    message: response.data.message
+                });
+            }else{
+                setStatus({
+                    formSave: false,
+                    type:'success',
+                    message: response.data.message
+                });
+            }
+        })
+        .catch(() => {
+            setStatus({
+                 formSave: false,
+                type:'error',
+                message: "Erro: Não foi possível se conectar a API."
             });
-    }
+        });
+    };
 
-    useEffect(() => {
-        getServicos();
-    }, []);
-    
+    /* const [data, setData] = useState([]);
+ 
+     const [status, setStatus] = useState({
+         type: '',
+         message: ''
+     });
+ 
+     
+     const apagarServicos = async (idServico) => {
+         console.log(idServico)
+ 
+         const headers = {
+             'Content-Type':'application/json'        OK
+         };
+ 
+         await axios.delete(api + "/apagarservico/"+idServico, {headers}) //NÃO TEM apagarcliente NO CONTROLLER.JS
+             .then((response) => {
+                 console.log(response.data.servicos);
+                 setData(response.data.servicos);
+                 getServicos();
+             })
+             .catch(() => {
+                 setStatus({
+                     type: 'error',
+                     message: 'Erro: Sem conexão com a API.'
+                 })
+             });
+     }
+ 
+     useEffect(() => {
+         getServicos();
+     }, []);
+     */
 
     return (
         <div className="p-3">
-            <Container>                
+            <Container>
                 {status.type === 'error' ? <Alert color="danger">{status.message}</Alert> : ""} <div className="d-flex">
                     <div className="mr-auto p-2">
-                        <h1>Informações do Serviço</h1>
+                        <h1>Cadastrar Serviço</h1>
                     </div>
                     <div className="p-2">
-                        <Link to="/cadastrarservico" className="btn btn-outline-primary btn-sm">Cadastrar</Link>
+                        <Link to="/visualizar-servico" className="btn btn-outline-primary btn-sm">Listar</Link>
                     </div>
                 </div>
+
+
+ 
+
+                <hr className="m-1" />
+
+                {status.type ==='error' ? <Alert color="danger">
+                    {status.message}</Alert>:""}
+
+                {status.type === 'success' ? <Alert color="success">
+                    {status.message}</Alert>:""}
+
+                <Form className="p-2" onSubmit={cadServico}>
+                    <FormGroup className="p-2">
+                        <Label>Nome</Label>
+                        <Input type="text" name="nome"
+                            placeholder="Nome do serviço" onChange={valorInput} />
+                    </FormGroup>
+
+                    <FormGroup className="p-2">
+                        <Label>Descrição</Label>
+                        <Input type="text" name="dercricao"
+                            placeholder="Descrição do serviço" onChange={valorInput} />
+                    </FormGroup>
+                </Form>
+                {status.formSave ?
+                    <Button type="submit" outline color="info" disabled>Salvando...
+                    <Spinner size="sm" color="info"/></Button> :
+                    <Button type="submit" outline color="info">Cadastrar</Button>}
+
+                <Button type="submit" outline color="info">Cadastrar</Button>
+
+
+
+
+
                 <Table striped hover>
                     <thead>
                         <tr>
@@ -69,11 +154,11 @@ export const VisualizarServico = () => {
                                 <td>{item.nome}</td>
                                 <td>{item.descricao}</td>
                                 <td className="text-center">
-                                    <Link to={"/servico/"+item.id} className="btn btn-outline-primary btnsm">Consultar</Link>
-                                    <Link to={"/editarservico/"+item.id}
-                                    className="btn btn-outline-warning btn-sm">Editar</Link>
+                                    <Link to={"/servico/" + item.id} className="btn btn-outline-primary btnsm">Consultar</Link>
+                                    <Link to={"/editarservico/" + item.id}
+                                        className="btn btn-outline-warning btn-sm">Editar</Link>
                                     <span className="btn btn-outline-danger btn-sm mr-1"
-                                        onClick={()=> apagarServico(item.id)}>Excluir</span>
+                                        onClick={() => apagarServico(item.id)}>Excluir</span>
                                 </td>
                             </tr>
                         ))}
